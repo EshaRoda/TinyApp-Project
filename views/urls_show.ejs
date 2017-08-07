@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+  <% include partials/_header %>
+  <ul>
+    <li><a href="/u/<%=shortURL%>"><%= shortURL %></a> ==> <%= urls[shortURL].longURL %></li>
+    <% if (stats[shortURL]) { %>
+      <% const visits = stats[shortURL].visits %>
+      <% for (const visit of visits) { %>
+        <li>User <%= visit.visitor_id %> visited on <%= visit.timeStamp %></li>
+      <% } %>
+      <li>Unique Visitors : <%= stats[shortURL].uniqueVisits %></li>
+      <li>Total Visitors : <%= stats[shortURL].visits.length %></li>
+    <% } %>
+  </ul>
+  <% if (urls[shortURL].userID === user.id) { %>
+    <form action="/urls/<%=shortURL%>?_method=PUT" method="POST">
+      <label for="longURL">Update URL:</label>
+    <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
+      <input type="submit" value="Submit">
+      <p>
+    <a href="/urls/new">Create a New Short Link</a>
+  </p>
+  <p>
+  <a href ="http://localhost:8080/urls/"> List of URLs</a>
+  </p>
+    </form>
+  <% } %>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<div style ="float:right">
+    <% if (user) { %>
+  <form method="POST" action="/logout">
+    Welcome <%= user.email %><input type="submit" value="Logout">
+  </form>
+<% } else { %>
+  <a href="/register">Register</a>
+  <a href="/login">Login</a>
+<% } %>
+  </div>
+</BODY>
+</html>

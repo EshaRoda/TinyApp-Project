@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+  <% include partials/_header %>
+  <ul>
+    <% for (const url in urls) { %>
+      <li>
+        <a href="/u/<%=url%>"><%= url %></a> --> <%= urls[url].longURL %>
+        <a href="/urls/<%= url %>">Edit</a>
+        <form method="POST" action="/urls/<%=url%>?_method=DELETE">
+          <input type="submit" value="Delete">
+        </form>
+      </li>
+    <% } %>
+  </ul>
+  <p>
+    <a href="/urls/new">Create a New Short Link</a>
+  </p>
+  <p>
+  <a href ="http://localhost:8080/urls/"> List of URLs</a>
+  </p>
+</body>
+</html>
